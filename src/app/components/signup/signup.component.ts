@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
+import { AuthServiceService } from 'src/app/Services/auth-service.service';
+import { TokenService } from 'src/app/Services/token.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -23,8 +26,13 @@ export class SignupComponent implements OnInit {
     name:null
 
   }
-  public error=['password','email'];
-  constructor(private http:HttpClient) { }
+  public error={  email:null,
+    password:null,
+    name:null};
+  constructor(private auth:AuthServiceService, private Token: TokenService,private router:Router) {
+
+
+   }
 
   ngOnInit(): void {
 
@@ -34,8 +42,8 @@ export class SignupComponent implements OnInit {
   onSubmit() {
     console.log(this.form)
 
-    return this.http.post('http://127.0.0.1:8000/api/signup',this.form).subscribe(
-      data=>console.log(data),
+    this.auth.signup(this.form).subscribe(
+         data => this.handleResponse(data),
       error=>this.handelError(error)
 
     );
@@ -43,5 +51,11 @@ export class SignupComponent implements OnInit {
   }
   handelError(error){
     this.error=error.error.errors;
+  }
+  handleResponse(data) {
+    this.Token.handle(data.access_token);
+
+    this.router.navigateByUrl('/profile');
+
   }
 }

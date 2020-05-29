@@ -12,6 +12,9 @@ import { RequestPassComponent } from './components/request-pass/request-pass.com
 import { ResponsePassComponent } from './components/response-pass/response-pass.component';
 import { FavouriteComponent } from './components/favourite/favourite.component';
 import {HttpClientModule} from "@angular/common/http";
+import { AuthServiceService } from './Services/auth-service.service';
+import { TokenService } from './Services/token.service';
+import { AuthenticateService } from './Services/authenticate.service';
 
 @NgModule({
   declarations: [
@@ -31,7 +34,7 @@ import {HttpClientModule} from "@angular/common/http";
     HttpClientModule,
 
   ],
-  providers: [],
+  providers: [AuthServiceService,TokenService,AuthenticateService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
