@@ -3,11 +3,15 @@ import { BehaviorSubject } from 'rxjs';
 import { TokenService } from './token.service';
 
 
-@Injectable({
-})
+@Injectable()
 export class AuthenticateService {
   private loggedIn= new BehaviorSubject<boolean>(this.Token.loggedIn());
-  auths
+  authStatus=this.loggedIn.asObservable();
 
-  constructor() { }
+  changeAuthStatus(value:boolean){
+   this.loggedIn.next(value);
+
+  }
+
+  constructor(private Token:TokenService) { }
 }

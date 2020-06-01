@@ -1,13 +1,14 @@
 <nav class="navbar navbar-light bg-light">
     <a class="navbar-brand">Recept App</a>
-    <a class="navbar-brand" routerLink="login">Home</a>
-    <a class="navbar-brand" routerLink="login">My Recept</a>
-    <a class="navbar-brand" routerLink="favourite">Favourite</a>
+    <a class="navbar-brand" routerLink="login" >Home</a>
+    <a class="navbar-brand" routerLink="login" *ngIf=loggedIn>My Recept</a>
+    <a class="navbar-brand" routerLink="favourite" *ngIf=loggedIn>Favourite</a>
  
 
     <div>
-      <a class="navbar-brand" routerLink="profile">Profile</a>
-      <a class="navbar-brand" routerLink="login">Login</a>
+      <a class="navbar-brand" routerLink="profile" *ngIf=loggedIn>Profile</a>
+      <a class="navbar-brand" routerLink="login" *ngIf=!loggedIn>Login</a>
+      <a class="navbar-brand" href="#" (click)="Logout($event)" *ngIf=loggedIn>Logout</a>
     
     </div>
  

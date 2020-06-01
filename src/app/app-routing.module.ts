@@ -6,20 +6,26 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { RequestPassComponent } from './components/request-pass/request-pass.component';
 import { ResponsePassComponent } from './components/response-pass/response-pass.component';
 import { FavouriteComponent } from './components/favourite/favourite.component';
+import { BeforeLoginService } from './Services/before-login.service';
+import { AfterLoginService } from './Services/after-login.service';
 
 
 const routes: Routes = [
 {
   path:'login',
-  component:LoginComponent
+  component:LoginComponent,
+  canActivate: [BeforeLoginService]
 },
 {
   path:'signup',
-  component:SignupComponent
+  component:SignupComponent,
+  canActivate: [BeforeLoginService]
 },
 {
   path:'profile',
-  component:ProfileComponent
+  component:ProfileComponent,
+
+
 },
 {
   path:'reset-pass',

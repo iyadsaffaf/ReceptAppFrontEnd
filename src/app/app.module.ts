@@ -15,6 +15,8 @@ import {HttpClientModule} from "@angular/common/http";
 import { AuthServiceService } from './Services/auth-service.service';
 import { TokenService } from './Services/token.service';
 import { AuthenticateService } from './Services/authenticate.service';
+import { AfterLoginService } from './Services/after-login.service';
+import { BeforeLoginService } from './Services/before-login.service';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,7 @@ import { AuthenticateService } from './Services/authenticate.service';
     HttpClientModule,
 
   ],
-  providers: [AuthServiceService,TokenService,AuthenticateService],
+  providers: [AuthServiceService,TokenService,AuthenticateService,AfterLoginService,BeforeLoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
