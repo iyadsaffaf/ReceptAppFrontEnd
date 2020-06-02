@@ -17,6 +17,10 @@ import { TokenService } from './Services/token.service';
 import { AuthenticateService } from './Services/authenticate.service';
 import { AfterLoginService } from './Services/after-login.service';
 import { BeforeLoginService } from './Services/before-login.service';
+import { MyReceptComponent } from './components/my-recept/my-recept.component';
+import { HomeComponent } from './components/home/home.component';
+import { ReceptDetailComponent } from './components/recept-detail/recept-detail.component';
+import { NewReceptComponent } from './components/new-recept/new-recept.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +31,11 @@ import { BeforeLoginService } from './Services/before-login.service';
     ProfileComponent,
     RequestPassComponent,
     ResponsePassComponent,
-    FavouriteComponent
+    FavouriteComponent,
+    MyReceptComponent,
+    HomeComponent,
+    ReceptDetailComponent,
+    NewReceptComponent
   ],
   imports: [
     BrowserModule,

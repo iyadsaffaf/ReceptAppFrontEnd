@@ -26,6 +26,7 @@ public error=null;
   ngOnInit(): void {
   }
   onSubmit(){
+    console.log(this.form+" FDVGSFD")
     this.auth.login(this.form).subscribe(
      data => this.handleResponse(data),
      error=>this.handelError(error)

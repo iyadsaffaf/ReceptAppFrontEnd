@@ -8,6 +8,10 @@ import { ResponsePassComponent } from './components/response-pass/response-pass.
 import { FavouriteComponent } from './components/favourite/favourite.component';
 import { BeforeLoginService } from './Services/before-login.service';
 import { AfterLoginService } from './Services/after-login.service';
+import {HomeComponent} from "./components/home/home.component";
+import {ReceptDetailComponent} from "./components/recept-detail/recept-detail.component";
+import {MyReceptComponent} from "./components/my-recept/my-recept.component";
+import {NewReceptComponent} from "./components/new-recept/new-recept.component";
 
 
 const routes: Routes = [
@@ -39,7 +43,31 @@ const routes: Routes = [
 {
   path:'favourite',
   component:FavouriteComponent
-}
+},
+  {
+    path:'myrecept',
+    component:MyReceptComponent
+  }
+  ,
+  {
+    path:'home',
+    component:HomeComponent
+  },
+  {
+    path:'receptdetail',
+    component:ReceptDetailComponent
+  },
+  {
+    path:'newrecept',
+    component:NewReceptComponent
+  }
+
+
+
+
+
+
+
 
 
 ];
