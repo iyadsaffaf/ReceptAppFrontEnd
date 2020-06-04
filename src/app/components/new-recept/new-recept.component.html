@@ -1,34 +1,41 @@
 <br>
 
-<form>
+<form #loginForm=ngForm (ngSubmit)="onSubmit()">
   <div class="form-group">
     <label for="exampleFormControlInput1">Name</label>
-    <input type="text" class="form-control" id="exampleFormControlInput1" >
+    <input type="name" name ="name" class="form-control" id="exampleFormControlInput1"
+           [(ngModel)]="recept.name" required>
   </div>
 
 
   <div class="form-group">
-    <label for="Descirpiton">Descirpiton</label>
-    <textarea class="form-control" id="Descirpiton" rows="3"></textarea>
+    <label for="descirpiton">Descirpiton</label>
+    <textarea class="form-control" id="descirpiton" name ="descirpiton" rows="3" [(ngModel)]="recept.description" required ></textarea>
+
   </div>
 
   <div class="form-group">
-    <label for="Ingredients">Ingredients</label>
-    <textarea class="form-control" id="Ingredients" rows="3"></textarea>
+    <label for="ingredients">Ingredients</label>
+    <textarea class="form-control" id="ingredients" rows="3" name ="ingredients"[(ngModel)]="recept.ingredients" required ></textarea>
   </div>
   <div class="form-group">
     <label for="tags">Tags</label>
-    <input type="text" class="form-control" id="tags" >
+    <input type="text" class="form-control" id="tags" name ="tags"[(ngModel)]="recept.tags" required>
+  </div>
+  <div class="form-group">
+    <label for="preparation_time">Time</label>
+    <input type="text" class="form-control" id="preparation_time" name ="preparation_time"[(ngModel)]="recept.preparation_time" required>
   </div>
   <div class="input-group mb-3">
     <div class="input-group-prepend">
       <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
     </div>
     <div class="custom-file">
-      <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+      <input  #imageInput type="file" class="custom-file-input" id="inputGroupFile01" (change)="onFileChanged($event)" accept="image/*">
       <label class="custom-file-label" for="inputGroupFile01">Choose Photo</label>
     </div>
   </div>
-  <button type="button" class="btn btn-secondary">Post</button>
+
+  <button type="submit" class="btn btn-secondary">Post</button>
 
 </form>

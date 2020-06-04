@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
-import {DataService} from "../../Services/data.service";
+import {DataService, Recept} from "../../Services/data.service";
 
 @Component({
   selector: 'app-home',
@@ -9,12 +9,14 @@ import {DataService} from "../../Services/data.service";
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  items = [];
-  daterecept={};
+
+  private recept:Recept;
+   recepts=[];
+
 
   constructor(private http:HttpClient,
               private router:Router,
-              private datas:DataService
+              private dataService:DataService
               ) { }
 
   ngOnInit(): void {
@@ -22,17 +24,18 @@ export class HomeComponent implements OnInit {
 
 
     this.http.get(`http://127.0.0.1:8000/api/recept`).subscribe((data: any[])=>{
-      console.log(data);
-      this.daterecept=data;
-      this.items = data;
+    //  console.log(data);
+
+      this.recepts = data;
     })
 
 
   }
   onSelect(data){
     console.log(data);
-    this.datas.currentData.subscribe(data=>this.daterecept=data)
-    this.datas.changeData(data);
+    this.recept=data;
+    this.dataService.currentData.subscribe(data=>this.recept=data)
+    this.dataService.changeData(data);
     this.router.navigateByUrl('/receptdetail')
 
   }

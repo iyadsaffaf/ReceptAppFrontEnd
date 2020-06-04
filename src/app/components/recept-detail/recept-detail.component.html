@@ -3,8 +3,14 @@
 <div class="card mb-3">
   <img src="..." class="card-img-top" alt="...">
   <div class="card-body">
-    <h5 class="card-title"> </h5>
-    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+    <h5 class="card-title">{{recept.name}} </h5>
+    <p class="card-text">{{recept.description}}</p>
+    <p class="card-text">Preparation time: {{recept.preparation_time}}</p>
+    <p class="card-text">Tags: {{recept.tags}}</p>
+    <p class="card-text">Added by :{{recept.user_id}}</p>
+
+
+
     <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
   </div>
 </div>

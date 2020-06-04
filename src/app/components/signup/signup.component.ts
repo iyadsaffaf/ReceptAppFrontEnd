@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import { AuthServiceService } from 'src/app/Services/auth-service.service';
 import { TokenService } from 'src/app/Services/token.service';
 import { Router } from '@angular/router';
+import {AuthenticateService} from "../../Services/authenticate.service";
 
 @Component({
   selector: 'app-signup',
@@ -29,7 +30,10 @@ export class SignupComponent implements OnInit {
   public error={  email:null,
     password:null,
     name:null};
-  constructor(private auth:AuthServiceService, private Token: TokenService,private router:Router) {
+  constructor(private auth:AuthServiceService, private Token: TokenService,
+              private router:Router,
+  private Authenticate:AuthenticateService
+  ) {
 
 
    }
@@ -54,6 +58,7 @@ export class SignupComponent implements OnInit {
   }
   handleResponse(data) {
     this.Token.handle(data.access_token);
+    this.Authenticate.changeAuthStatus(true);
 
     this.router.navigateByUrl('/profile');
 
