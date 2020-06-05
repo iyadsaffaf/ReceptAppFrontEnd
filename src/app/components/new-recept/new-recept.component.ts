@@ -9,6 +9,10 @@ import {HttpClient} from "@angular/common/http";
 })
 export class NewReceptComponent implements OnInit {
   public recept:Recept=new Recept();
+  public  body;
+  public url:UpUrl;
+
+
   constructor(private http:HttpClient) { }
   private baseUrl='http://127.0.0.1:8000/api';
   selectedFile: File;
@@ -17,13 +21,14 @@ export class NewReceptComponent implements OnInit {
   }
 
   onSubmit() {
-    this.recept.url="Ff";
-    this.recept.user_id="Ff";
-    this.http.post(`${this.baseUrl}/receptsave`,this.recept).subscribe(
-      data => this.handleResponse(data),
+  // get image url
+    this.http.post(`${this.baseUrl}/fileupload`,this.body).subscribe(
+      data => this.handleResponseUpload(data),
       error=>this.handelError(error)
 
     );
+
+
 
 
   }
@@ -33,14 +38,40 @@ export class NewReceptComponent implements OnInit {
 
   }
 
-  private handleResponse(data: Object) {
+  private handleResponse(data) {
+
     console.log(data);
+
+  }
+
+  private handleResponseUpload(data) {
+    this.url=data;
+   console.log(this.recept.url+"fgdgfgf");
+    console.log(data+"fgdjnlgfgf");
+
+    this.recept.url=this.url.url;
+
+    this.recept.user_id="5555";
+    this.http.post(`${this.baseUrl}/receptsave`,this.recept).subscribe(
+      data => this.handleResponse(data),
+      error=>this.handelError(error)
+
+    );
+
+
+
   }
 
   onFileChanged(imageInput: any) {
+    this.body= new FormData()
     const file: File = imageInput.files[0];
-    console.log(file.name)
-
+    this.body.append('photo',file);
 
   }
 }
+export class UpUrl{
+  url: string
+
+}
+
+
