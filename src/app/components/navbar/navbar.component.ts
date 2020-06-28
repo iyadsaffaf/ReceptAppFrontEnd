@@ -9,24 +9,24 @@ import { TokenService } from 'src/app/Services/token.service';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  public loggedIn:boolean;
+  public loggedIn: boolean;
 
   constructor(
-    private Auth:AuthenticateService,
-    private router:Router,
-    private token:TokenService
+    private Auth: AuthenticateService,
+    private router: Router,
+    private token: TokenService
     ) { }
 
   ngOnInit() {
-       this.Auth.authStatus.subscribe(value=>this.loggedIn=value)
+       this.Auth.authStatus.subscribe(value => this.loggedIn = value);
 
 
   }
-  Logout(event:MouseEvent){
+  Logout(event: MouseEvent){
    event.preventDefault();
    this.token.remove();
-    this.Auth.changeAuthStatus(false);
-    this.router.navigateByUrl('/login')
+   this.Auth.changeAuthStatus(false);
+   this.router.navigateByUrl('/login');
   }
 
 }

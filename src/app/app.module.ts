@@ -11,7 +11,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { RequestPassComponent } from './components/request-pass/request-pass.component';
 import { ResponsePassComponent } from './components/response-pass/response-pass.component';
 import { FavouriteComponent } from './components/favourite/favourite.component';
-import {HttpClientModule} from "@angular/common/http";
+import {HttpClientModule} from '@angular/common/http';
 import { AuthServiceService } from './Services/auth-service.service';
 import { TokenService } from './Services/token.service';
 import { AuthenticateService } from './Services/authenticate.service';
@@ -21,22 +21,26 @@ import { MyReceptComponent } from './components/my-recept/my-recept.component';
 import { HomeComponent } from './components/home/home.component';
 import { ReceptDetailComponent } from './components/recept-detail/recept-detail.component';
 import { NewReceptComponent } from './components/new-recept/new-recept.component';
+import {FooterComponent} from './components/footer/footer.component';
+import { DeleteReceptComponent } from './components/delete-recept/delete-recept.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    NavbarComponent,
-    LoginComponent,
-    SignupComponent,
-    ProfileComponent,
-    RequestPassComponent,
-    ResponsePassComponent,
-    FavouriteComponent,
-    MyReceptComponent,
-    HomeComponent,
-    ReceptDetailComponent,
-    NewReceptComponent
-  ],
+    declarations: [
+        AppComponent,
+        NavbarComponent,
+        LoginComponent,
+        SignupComponent,
+        ProfileComponent,
+        RequestPassComponent,
+        ResponsePassComponent,
+        FavouriteComponent,
+        MyReceptComponent,
+        HomeComponent,
+        ReceptDetailComponent,
+        NewReceptComponent,
+        FooterComponent,
+        DeleteReceptComponent
+    ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -44,7 +48,7 @@ import { NewReceptComponent } from './components/new-recept/new-recept.component
     HttpClientModule,
 
   ],
-  providers: [AuthServiceService,TokenService,AuthenticateService,AfterLoginService,BeforeLoginService],
+  providers: [AuthServiceService, TokenService, AuthenticateService, AfterLoginService, BeforeLoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
