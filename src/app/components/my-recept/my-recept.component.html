@@ -1,4 +1,5 @@
 <br>
+
 <button type="button" class="btn btn-primary btn-lg" (click)="onClick()"  style="float:right;">new Recept</button>
 
 <br>
@@ -11,6 +12,7 @@
      style="cursor:pointer" >
 
   <div class="card mb-3" style="max-width: 540px;" *ngIf="user.id==item.user_id">
+
     <div class="row no-gutters">
       <div class="col-md-4">
         <img src={{item.url}} class="card-img" alt="...">
@@ -23,6 +25,7 @@
         </div>
       </div>
     </div>
+
     <a   href="#" class="btn btn-primary">Edit</a>
     <br>
     <a style="color:red;" href="#" class="btn btn-primary">Delete</a>
@@ -30,4 +33,6 @@
   </div>
 
 </div>
+
+
 

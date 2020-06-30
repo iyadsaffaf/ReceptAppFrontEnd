@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+
 import {Router} from "@angular/router";
 import {User, UserService} from "../../Services/Data/user.service";
 import {HttpClient} from "@angular/common/http";
 import {DataService, Recept} from "../../Services/data.service";
+
 
 @Component({
   selector: 'app-my-recept',
@@ -10,6 +12,7 @@ import {DataService, Recept} from "../../Services/data.service";
   styleUrls: ['./my-recept.component.css']
 })
 export class MyReceptComponent implements OnInit {
+
   public user:User;
 
   private recept:Recept;
@@ -29,12 +32,16 @@ export class MyReceptComponent implements OnInit {
 
       this.recepts = data;
     })
+
   }
-  onClick(){
+  onClick()
+  {
     this.router.navigateByUrl('/newrecept');
   }
 
+
   onSelect(item: any) {
     
+
   }
 }
