@@ -1,0 +1,21 @@
+.card{
+  margin: 150px;
+  width: 400px;
+  height: 600px;
+  background-color: #f7f7f7a6;
+  border: none;
+  border-radius: 20px;
+}
+.card-body{
+  width: auto;
+  background: ghostwhite;
+}
+.card-text{
+  text-decoration-color: black;
+  text-align: left;
+}
+
+.btn{
+  width: 100%;
+  background-color: #a0a0a1;
+}
