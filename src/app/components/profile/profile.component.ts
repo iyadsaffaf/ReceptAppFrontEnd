@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {UserService, User} from '../../Services/Data/user.service';
-import {Router} from '@angular/router';
-import {HttpClient} from '@angular/common/http';
 
+import {User, UserService} from "../../Services/Data/user.service";
 
 
 @Component({
@@ -11,11 +9,14 @@ import {HttpClient} from '@angular/common/http';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  user: User;
-  router: Router;
-  http: HttpClient;
 
-  constructor(private dataUser: UserService) {
+  public user:User;
+  constructor(private userService:UserService) { }
+
+  ngOnInit(): void {
+    this.userService.currentData.subscribe(data=>this.user=data)
+
+
   }
 
   ngOnInit(): void {

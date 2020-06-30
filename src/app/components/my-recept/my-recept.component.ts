@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from '@angular/router';
-import {HttpClient} from '@angular/common/http';
-import {DataService, Recept } from '../../Services/data.service';
+
+import {Router} from "@angular/router";
+import {User, UserService} from "../../Services/Data/user.service";
+import {HttpClient} from "@angular/common/http";
+import {DataService, Recept} from "../../Services/data.service";
 
 
 @Component({
@@ -10,20 +12,26 @@ import {DataService, Recept } from '../../Services/data.service';
   styleUrls: ['./my-recept.component.css']
 })
 export class MyReceptComponent implements OnInit {
-  private recept: Recept;
-  recepts = [];
 
-  constructor(private router: Router,
-              private http: HttpClient,
-              private dataService: DataService) {
+  public user:User;
+
+  private recept:Recept;
+  recepts=[];
+
+  constructor(private http:HttpClient,
+              private router:Router,
+              private dataService:DataService,private userService:UserService) {
+
   }
 
   ngOnInit(): void {
-    this.http.get(`http://127.0.0.1:8000/api/recept`).subscribe((data: any[]) => {
+    this.userService.currentData.subscribe(data=>this.user=data)
+
+    this.http.get(`http://127.0.0.1:8000/api/recept`).subscribe((data: any[])=>{
       //  console.log(data);
 
       this.recepts = data;
-    });
+    })
 
   }
   onClick()
@@ -31,12 +39,9 @@ export class MyReceptComponent implements OnInit {
     this.router.navigateByUrl('/newrecept');
   }
 
-  onSelect(data){
-    console.log(data);
-    this.recept = data;
-    this.dataService.currentData.subscribe(data => this.recept = data);
-    this.dataService.changeData(data);
-    this.router.navigateByUrl('/receptdetail');
+
+  onSelect(item: any) {
+    
 
   }
 }

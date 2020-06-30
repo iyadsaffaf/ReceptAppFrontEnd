@@ -1,31 +1,34 @@
 import { Injectable } from '@angular/core';
-import {BehaviorSubject} from 'rxjs';
-import {HttpClient} from '@angular/common/http';
+
+import {BehaviorSubject} from "rxjs";
+
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  private user: User;
-  private data = new BehaviorSubject(this.user);
-  currentData = this.data.asObservable();
 
-  constructor(private http: HttpClient) {
+  private user:User;
+  private data=new BehaviorSubject(this.user);
+  currentData=this.data.asObservable();
+  constructor() { }
 
-  }
+  changeData(data){
 
-  changeData(data) {
     this.data.next(data);
 
   }
 }
+
+
 export class User {
-  id: string;
-  name: number;
-  email: string;
-  createda: string;
-  tags: string;
-  d: string;
-  url: string;
+
+  id: string
+  name:string
+  email:string
+
+
+
 
 }
