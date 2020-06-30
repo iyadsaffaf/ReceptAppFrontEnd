@@ -11,6 +11,7 @@ import {DataService, Recept} from "../../Services/data.service";
 })
 export class MyReceptComponent implements OnInit {
   public user:User;
+  private baseUrl='http://127.0.0.1:8000/api';
 
   private recept:Recept;
   recepts=[];
@@ -35,6 +36,36 @@ export class MyReceptComponent implements OnInit {
   }
 
   onSelect(item: any) {
-    
+    //this.router.navigateByUrl('/editerecept');
+
+  }
+
+  onEditClick(data) {
+    this.recept=data;
+    this.dataService.currentData.subscribe(data=>this.recept=data)
+    this.dataService.changeData(data);
+    this.router.navigateByUrl('/editerecept');
+
+  }
+
+  onDeleteClick(data) {
+    this.recept=data;
+    this.dataService.currentData.subscribe(data=>this.recept=data)
+    this.dataService.changeData(data);
+
+    this.http.delete(`${this.baseUrl}/recept`+'/'+this.recept.id).subscribe(
+      data => this.handleResponse(data),
+      error=>this.handelError(error)
+
+    );
+  }
+
+  private handelError(error: any) {
+
+  }
+
+  private handleResponse(data: Object) {
+    this.router.navigateByUrl('/home')
+
   }
 }

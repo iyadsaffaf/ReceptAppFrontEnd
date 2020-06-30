@@ -1,42 +1,56 @@
 import { Component, OnInit } from '@angular/core';
-import {Recept} from "../../Services/data.service";
-import {HttpClient} from "@angular/common/http";
+import {DataService, Recept} from "../../Services/data.service";
 import {User, UserService} from "../../Services/Data/user.service";
+import {UpUrl} from "../new-recept/new-recept.component";
+import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
 
 @Component({
-  selector: 'app-new-recept',
-  templateUrl: './new-recept.component.html',
-  styleUrls: ['./new-recept.component.css']
+  selector: 'app-edite-recept',
+  templateUrl: './edite-recept.component.html',
+  styleUrls: ['./edite-recept.component.css']
 })
-export class NewReceptComponent implements OnInit {
+export class EditeReceptComponent implements OnInit {
+  oldrecept:Recept;
+
   public recept:Recept=new Recept();
   public  body;
   public url:UpUrl;
-
   public user:User;
+  public imageurl;
+  public withFoto:boolean;
 
-  constructor(private http:HttpClient,private userService:UserService , private router:Router) { }
+  constructor(private dataService:DataService,private http:HttpClient,private userService:UserService  , private router:Router, ) { }
   private baseUrl='http://127.0.0.1:8000/api';
   selectedFile: File;
 
   ngOnInit(): void {
+    this.dataService.currentData.subscribe(data=>this.oldrecept=data)
     this.userService.currentData.subscribe(data=>this.user=data)
-
+     this.imageurl=this.oldrecept.url;
+    this.withFoto=false;
   }
 
   onSubmit() {
-  // get image url
+    if(this.withFoto){
     this.http.post(`${this.baseUrl}/fileupload`,this.body).subscribe(
       data => this.handleResponseUpload(data),
       error=>this.handelError(error)
 
-    );
+    );}else {
+      this.http.put(`${this.baseUrl}/recept`+'/'+this.oldrecept.id,this.recept).subscribe(
+        data => this.handleResponse(data),
+        error=>this.handelError(error)
+
+      );
+      this.router.navigateByUrl('/myrecept')
 
 
 
+    }
 
   }
+
 
   private handelError(error: any) {
     console.log(error);
@@ -46,20 +60,14 @@ export class NewReceptComponent implements OnInit {
   private handleResponse(data) {
 
     console.log(data);
-    this.router.navigateByUrl('/home')
-
 
   }
 
   private handleResponseUpload(data) {
     this.url=data;
-   console.log(this.recept.url+"fgdgfgf");
-    console.log(data+"fgdjnlgfgf");
-
     this.recept.url=this.url.url;
-
     this.recept.user_id=this.user.id;
-    this.http.post(`${this.baseUrl}/receptsave`,this.recept).subscribe(
+    this.http.put(`${this.baseUrl}/recept`+'/'+this.oldrecept.id,this.recept).subscribe(
       data => this.handleResponse(data),
       error=>this.handelError(error)
 
@@ -73,12 +81,7 @@ export class NewReceptComponent implements OnInit {
     this.body= new FormData()
     const file: File = imageInput.files[0];
     this.body.append('photo',file);
+    this.withFoto=true;
 
   }
 }
-export class UpUrl{
-  url: string
-
-}
-
-

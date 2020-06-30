@@ -32,7 +32,7 @@ export class HomeComponent implements OnInit {
 
   }
   onSelect(data){
-    console.log(data);
+    //console.log(data);
     this.recept=data;
     this.dataService.currentData.subscribe(data=>this.recept=data)
     this.dataService.changeData(data);

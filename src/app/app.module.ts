@@ -21,6 +21,7 @@ import { MyReceptComponent } from './components/my-recept/my-recept.component';
 import { HomeComponent } from './components/home/home.component';
 import { ReceptDetailComponent } from './components/recept-detail/recept-detail.component';
 import { NewReceptComponent } from './components/new-recept/new-recept.component';
+import { EditeReceptComponent } from './components/edite-recept/edite-recept.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { NewReceptComponent } from './components/new-recept/new-recept.component
     MyReceptComponent,
     HomeComponent,
     ReceptDetailComponent,
-    NewReceptComponent
+    NewReceptComponent,
+    EditeReceptComponent
   ],
   imports: [
     BrowserModule,

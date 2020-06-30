@@ -12,6 +12,7 @@ import {HomeComponent} from "./components/home/home.component";
 import {ReceptDetailComponent} from "./components/recept-detail/recept-detail.component";
 import {MyReceptComponent} from "./components/my-recept/my-recept.component";
 import {NewReceptComponent} from "./components/new-recept/new-recept.component";
+import {EditeReceptComponent} from "./components/edite-recept/edite-recept.component";
 
 
 const routes: Routes = [
@@ -60,6 +61,11 @@ const routes: Routes = [
   {
     path:'newrecept',
     component:NewReceptComponent
+  }
+  ,
+  {
+    path:'editerecept',
+    component:EditeReceptComponent
   }
 
 
