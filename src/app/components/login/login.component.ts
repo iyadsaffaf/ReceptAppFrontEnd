@@ -10,32 +10,32 @@ import { AuthenticateService } from 'src/app/Services/authenticate.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-public form={
-  email:null,
-  password:null,
+public form = {
+  email: null,
+  password: null,
 
-}
-public error=null;
+};
+public error = null;
 
   constructor(
-    private auth:AuthServiceService, 
+    private auth: AuthServiceService,
     private Token: TokenService,
-    private router:Router,
-    private Authenticate:AuthenticateService ) { }
+    private router: Router,
+    private Authenticate: AuthenticateService ) { }
 
   ngOnInit(): void {
   }
   onSubmit(){
-    console.log(this.form+" FDVGSFD")
+    console.log(this.form + ' FDVGSFD');
     this.auth.login(this.form).subscribe(
      data => this.handleResponse(data),
-     error=>this.handelError(error)
+     error => this.handelError(error)
 
    );
-    console.log(this.form)
+    console.log(this.form);
   }
   handelError(error){
-    this.error=error.error.error;
+    this.error = error.error.error;
   }
   handleResponse(data) {
     this.Token.handle(data.access_token);

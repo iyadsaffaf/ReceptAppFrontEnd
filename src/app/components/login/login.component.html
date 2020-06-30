@@ -1,7 +1,10 @@
+<link rel="stylesheet" href="login.component.css">
 <div class="mt-4 col-8 offset-2">
-  <div class="card">
-    <div class="card-header">  Login Here</div>
+  <div id= 'id02' class="card">
+    <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
     <div class="card-body">
+      <h1>Please Login or Make an account</h1>
+
         <form #loginForm=ngForm (ngSubmit)="onSubmit()">
 
             <div class="alert alert-danger"  [hidden]="!error"> {{error}} </div>
