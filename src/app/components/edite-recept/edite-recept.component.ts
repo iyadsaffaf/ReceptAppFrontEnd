@@ -43,7 +43,7 @@ export class EditeReceptComponent implements OnInit {
         error=>this.handelError(error)
 
       );
-      this.router.navigateByUrl('/myrecept')
+      this.router.navigateByUrl('/home')
 
 
 

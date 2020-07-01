@@ -22,6 +22,7 @@ import { HomeComponent } from './components/home/home.component';
 import { ReceptDetailComponent } from './components/recept-detail/recept-detail.component';
 import { NewReceptComponent } from './components/new-recept/new-recept.component';
 import { EditeReceptComponent } from './components/edite-recept/edite-recept.component';
+import { ProfileEditComponent } from './components/profile-edit/profile-edit.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { EditeReceptComponent } from './components/edite-recept/edite-recept.com
     HomeComponent,
     ReceptDetailComponent,
     NewReceptComponent,
-    EditeReceptComponent
+    EditeReceptComponent,
+    ProfileEditComponent
   ],
   imports: [
     BrowserModule,

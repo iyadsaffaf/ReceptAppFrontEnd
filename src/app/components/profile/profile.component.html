@@ -1,16 +1,19 @@
 <br>
 <link rel="stylesheet" href="profile.component.css">
 <div class="card" >
-  <div class="card-header"> Profile info </div>
+  <div class="card-header"> Profile information </div>
 
   <div class="card-body">
-    
-<img class="card-img-top" src="app/profile.png">
+
+<img class="card-img-top" src="assets/man.webp">
+    <br>
     <p class="card-text">ID: {{user.id}}</p>
     <p class="card-text">User Name: {{user.name}}</p>
     <p class="card-text">Email: {{user.email}}</p>
+    <p class="card-text">Created on : {{user.created_at.slice(0,user.created_at.indexOf("T"))}}</p>
+
   </div>
-    <p><button class="btn">Edit</button></p>
+    <p><button class="btn" (click)="onclick()">Edit</button></p>
 
 
 
