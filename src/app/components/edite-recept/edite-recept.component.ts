@@ -43,7 +43,6 @@ export class EditeReceptComponent implements OnInit {
         error=>this.handelError(error)
 
       );
-      this.router.navigateByUrl('/home')
 
 
 
@@ -55,11 +54,19 @@ export class EditeReceptComponent implements OnInit {
   private handelError(error: any) {
     console.log(error);
 
+
   }
 
   private handleResponse(data) {
 
     console.log(data);
+
+    this.recept=data;
+    this.dataService.currentData.subscribe(data=>this.recept=data)
+
+    this.dataService.changeData(data);
+
+    this.router.navigateByUrl('/home')
 
   }
 
