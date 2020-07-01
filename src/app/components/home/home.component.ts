@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
 import {DataService, Recept} from "../../Services/data.service";
+import {Favourite} from "../../Services/Data/favourite-service.service";
+import {User} from "../../Services/Data/user.service";
 
 @Component({
   selector: 'app-home',
@@ -13,6 +15,8 @@ export class HomeComponent implements OnInit {
   public recept:Recept;
    recepts=[];
   public value=""
+  private favourite:Favourite;
+  public user:User ;
 
   constructor(private http:HttpClient,
               private router:Router,
@@ -44,7 +48,6 @@ export class HomeComponent implements OnInit {
     this.value=value;
   }
 
-  onSearch() {
 
-  }
+
 }

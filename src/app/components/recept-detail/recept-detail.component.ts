@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {DataService, Recept} from "../../Services/data.service";
 import {User} from "../../Services/Data/user.service";
 import {HttpClient} from "@angular/common/http";
+import {Favourite} from "../../Services/Data/favourite-service.service";
 
 @Component({
   selector: 'app-recept-detail',
@@ -11,6 +12,8 @@ import {HttpClient} from "@angular/common/http";
 export class ReceptDetailComponent implements OnInit {
    recept:Recept;
    public  user:User =new User();
+  private favourite:Favourite;
+
 
   private baseUrl='http://127.0.0.1:8000/api';
   constructor(private dataService:DataService,private http:HttpClient) { }
@@ -37,6 +40,20 @@ export class ReceptDetailComponent implements OnInit {
 
   private handleResponse(data) {
             this.user=data;
+  }
+  onSave(data) {
+    console.log(data);
+
+    this.favourite=new Favourite();
+    this.favourite.user_id=data.id;
+    this.favourite.recept_id=data.id;
+    console.log(this.favourite);
+
+    this.http.post(`http://127.0.0.1:8000/api/favourite`,this.favourite).subscribe((data: any[])=>{
+      console.log(data);
+
+      // this.recepts = data;
+    })
   }
 }
 

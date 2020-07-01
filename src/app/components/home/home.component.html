@@ -10,12 +10,12 @@
 <br>
 
 <div class="cart-item" *ngFor="let item of recepts"
-     (click)="onSelect(item)"
      style="cursor:pointer"
 >
 
-  <div class="card mb-3" style="max-width: 540px;" *ngIf="item.name.includes(value)">
-    <div class="row no-gutters">
+  <div class="card mb-3" style="max-width: 540px;" *ngIf="item.name.includes(value)"
+  >
+    <div class="row no-gutters" (click)="onSelect(item)">
       <div class="col-md-4">
         <img src={{item.url}} class="card-img" alt="...">
       </div>
@@ -24,8 +24,16 @@
           <h5 class="card-title">{{item.name}} </h5>
           <p class="card-text">{{item.description}}</p>
           <p class="card-text"><small class="text-muted">Last updated on {{item.created_at.slice(0,item.created_at.indexOf("T"))}}</small></p>
+
         </div>
+
+
+
       </div>
+
+
     </div>
+
   </div>
+
 </div>
