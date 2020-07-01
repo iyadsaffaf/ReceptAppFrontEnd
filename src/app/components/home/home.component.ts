@@ -10,9 +10,9 @@ import {DataService, Recept} from "../../Services/data.service";
 })
 export class HomeComponent implements OnInit {
 
-  private recept:Recept;
+  public recept:Recept;
    recepts=[];
-
+  public value=""
 
   constructor(private http:HttpClient,
               private router:Router,
@@ -40,4 +40,11 @@ export class HomeComponent implements OnInit {
 
   }
 
+  onEnter(value: string) {
+    this.value=value;
+  }
+
+  onSearch() {
+
+  }
 }
